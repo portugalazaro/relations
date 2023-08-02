@@ -30,7 +30,8 @@ class UserController extends Controller
         $data = [
             'name' => trim(htmlspecialchars($request->name)),
             'email' => trim(htmlspecialchars($request->email)),
-            'password' => trim(htmlspecialchars($request->password))
+            'password' => trim(htmlspecialchars($request->password)),
+            'address_id' => trim(htmlspecialchars($request->address_id))
         ];
 
 
@@ -38,10 +39,26 @@ class UserController extends Controller
         // $request->all();
 
         // only(['campos...']) -> pega somente os dados especificados da requisicao dentro do array
-        // $data = $request->only(['name','email', 'password']);
+        // $data = $request->only(['name','email', 'password', 'address_id ']);
+        
+        // $user = new User();
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->password = $request->password;
+        // $user->address_id = $request->address_id;
+
+        // return $user->save();
 
         return User::create($data);
 
+    }
+
+
+
+    public function dell(Request $request) 
+    {
+        User::where('id', '>', 0)->delete();
+        // $post = Post::where('id', '>', 0)->delete();
     }
 
 }
