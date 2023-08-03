@@ -15,4 +15,6 @@ class Invoice extends Model
         'address_id',
         'user_id'
     ];
+
+    protected $table = 'invoice';
 }

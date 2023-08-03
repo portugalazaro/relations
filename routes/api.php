@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AddressesController;
+use App\Http\Controllers\{invoiceController,UserController,AddressesController};
 
 
 // Um usuário, tem inicialmente, um endereço
@@ -28,3 +27,15 @@ Route::get('/addresses/{id?}', [AddressesController::class, 'findOne']);
 
 // Criando um novo endereço
 Route::post('/addresses/create', [AddressesController::class, 'createAddresses']);
+
+
+// ------------------------------- Invoice ------------------------------
+
+// Buscando todos os invoices
+Route::get('/invoices', [invoiceController::class, 'index']);
+
+// Criando um invoice 
+Route::post('/invoices/create', [invoiceController::class, 'createInvoice']);
+
+// Buscando um invoice apartir do ID
+Route::get('/invoices/{id?}', [invoiceController::class, 'findOne']);

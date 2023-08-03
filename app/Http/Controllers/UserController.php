@@ -34,6 +34,10 @@ class UserController extends Controller
             'address_id' => trim(htmlspecialchars($request->address_id))
         ];
 
+        ;
+        if(empty($data['address_id'])){
+            $data['address_id'] = null;
+        }
 
         // all() -> pega todos os dados enviado na requisicao
         // $request->all();
