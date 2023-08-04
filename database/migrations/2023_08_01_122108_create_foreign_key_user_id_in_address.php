@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('address_id')
+        Schema::table('addresses', function (Blueprint $table) {
+            $table->foreign('user_id')
                 ->references('id')      
-                ->on('addresses')
+                ->on('users')
                 ->onDelete('SET NULL');
 
                 // onDelete('SET NULL') -> possibilita a exclusão do endereço que pode estar relacionado
@@ -27,8 +27,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('address_id');
+        Schema::table('addresses', function (Blueprint $table) {
+            $table->dropForeign('user_id');
         });
     }
 };

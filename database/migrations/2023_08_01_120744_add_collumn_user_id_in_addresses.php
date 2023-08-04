@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('addresses', function (Blueprint $table) {
             //campo que so permite numeros inteiro, e pode ser nullo
-            $table->unsignedBigInteger('address_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
         });
     }
 
@@ -22,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('address_id');
+        Schema::table('addresses', function (Blueprint $table) {
+            $table->dropColumn('user_id');
         });
     }
 };

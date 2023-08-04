@@ -21,7 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'address_id'
     ];
 
     /**
@@ -32,6 +31,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'address_id'
     ];
 
     /**
@@ -43,4 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function address()
+    {
+        return $this->hasMany(Addresses::class, 'user_id', 'id', 'addresses');
+    }
+
 }

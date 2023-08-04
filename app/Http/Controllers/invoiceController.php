@@ -24,7 +24,10 @@ class invoiceController extends Controller
     {
         // verificando se é uma string numerica, 
         if(is_numeric($request->id)) {
-            return Invoice::find($request->id);
+            $invoice =  Invoice::find($request->id);
+            $invoice['user_id'] = $invoice->userId->name;
+            // return $invoice->userId;
+            return $invoice;
         }
 
         return 'id inválido!, hacker vagabundo';

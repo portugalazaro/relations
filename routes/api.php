@@ -11,7 +11,7 @@ Route::get('/users', [UserController::class, 'index']);
 // Incluindo um usuário no banco de dados
 Route::post('/users/create', [UserController::class, 'createUser']);
 
-Route::get('/users/dell', [UserController::class, 'dell']);
+Route::delete('/users/dell', [UserController::class, 'dell']);
 
 // Buscando somente um usuário pelo seu ID
 Route::get('/users/{id?}', [UserController::class, 'findOne']);

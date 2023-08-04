@@ -17,7 +17,9 @@ class AddressesController extends Controller
     public function findOne(Request $request)
     {
         if(is_numeric($request->id) && Addresses::find($request->id)) {
-            return Addresses::find($request->id);
+            $address =  Addresses::find($request->id);
+            $address['user'] = $address->user;
+            return $address;
         }
 
         return 'deu merda';

@@ -17,7 +17,9 @@ class UserController extends Controller
     {
 
         if(is_numeric($request->id) && User::find($request->id)) {
-            return User::find($request->id);
+            $user =  User::find($request->id);
+            $user['address'] = $user->address;
+            return $user;
         }
 
         return 'deu merda1';
