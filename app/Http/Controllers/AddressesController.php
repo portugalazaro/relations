@@ -7,6 +7,7 @@ use App\Models\Addresses;
 
 class AddressesController extends Controller
 {
+    // retornando todos os endereços do banco
     public function index(Request $request) 
     {
         return Addresses::all();
@@ -14,10 +15,13 @@ class AddressesController extends Controller
     }
 
 
+    // retorna um endereço em especifico 
     public function findOne(Request $request)
     {
-        if(is_numeric($request->id) && Addresses::find($request->id)) {
-            $address =  Addresses::find($request->id);
+        // veriica se o id é um numero ou string numerica, depois verifica se o id existe no banco
+        if(is_numeric($request->id) && $address = Addresses::find($request->id)) {
+            // $address =  Addresses::find($request->id);
+            // adicionando informações do usuário relacionado com aquele endereço
             $address['user'] = $address->user;
             return $address;
         }
@@ -27,11 +31,11 @@ class AddressesController extends Controller
 
 
 
+    // criando um novo endereço
     public function createAddresses(Request $request)
     {
-        // return $request->all();
-
-        // criando um novo endereço
+        // passando os dados da requisição direto para o construtor do model
+        // o certo seria fazer uma validação desses dados
         return Addresses::create($request->all());
 
     }

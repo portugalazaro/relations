@@ -33,13 +33,14 @@ class Invoice extends Model
             1 - nome do model que tem relacionamento
             2 - O campo id refere-se ao model Addresses
             3 - O campo address_id refere-se ao model invoice
+            4 - O nome da tabela
         */ 
-        return $this->hasOne(Addresses::class,'id', 'address_id');
+        return $this->hasOne(Addresses::class,'id', 'address_id', 'addresses');
     }
 
     // relacionamento com a tabela user
     public function userId()
     {
-        return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id', 'users');
     }
 }

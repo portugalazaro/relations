@@ -47,6 +47,8 @@ class User extends Authenticatable
 
     public function address()
     {
+        // hasMany -> Um para muitos: 
+        // Retorna todos os endereços que pertencem a um usuário
         return $this->hasMany(Addresses::class, 'user_id', 'id', 'addresses');
     }
 

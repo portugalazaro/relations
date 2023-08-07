@@ -5,12 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{invoiceController,UserController,AddressesController};
 
 
-// Um usuário, tem inicialmente, um endereço
+// Retorna todos os usuários
 Route::get('/users', [UserController::class, 'index']);
 
 // Incluindo um usuário no banco de dados
 Route::post('/users/create', [UserController::class, 'createUser']);
 
+// Deletando todos os usuários do banco
 Route::delete('/users/dell', [UserController::class, 'dell']);
 
 // Buscando somente um usuário pelo seu ID
